@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="András Laczkó">
+    <meta name="copyright" content="For educational purposes only">
+    <meta name="description" content="Here, users can subscribe to the newsletter">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="jQuery/jquery-3.6.0.min.js"></script>
+    <script src="jQuery/jquery-validation-1.19.3/dist/jquery.validate.min.js"></script>
+    <title>Biomes</title>
+    <link rel="icon" type="image/x-icon" href="pictures/favicon.png">
+</head>
+<body id="form">
+    <header>
+        <h1>BIOMES</h1>
+        <div id="hamburger"></div>
+        <nav class="move" id="menu">
+            <ul class="navigation">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="forest.html">Forest</a></li>
+                <li><a href="waters.html">Waters</a></li>
+                <li><a href="desert.html">Desert</a></li>
+                <li class="active"><a href="/">SUBSCRIBE</a></li>
+            </ul>
+        </nav>
+    </header>
+    <form action="http://szamtud.uni-corvinus.hu/~blang/receive.php" id="subscribe" method="POST" novalidate>
+        <h1>SUBSCRIBE</h1>
+        <p>Do you want to receive our online newsletter, or would rather have it delivered to you by<br> mail (free delivery)?</p>
+        <div id="deliveryContainer">
+            <label for="online">Online</label>
+            <input type="radio" name="delivery" value="online" id="online" checked>
+            <label for="mail">Mail (only in Hungary)</label>
+            <input type="radio" name="delivery" value="mail" id="mail">
+        </div>
+        <hr id="line">
+        <div id="nameContainer">
+            <label for="firstName">First name:</label>
+            <input type="text" id="firstName" name="firstName">
+            <label for="lastName">Last name:</label>
+            <input type="text" id="lastName" name="lastName">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email">
+        </div>
+        <div id="addressContainer">
+            <h2>Address</h2>
+            <div id="addressGrid">
+                <label for="city">City:&nbsp;</label>
+                <input type="text" name="city" id="city" list="cityList"> 
+                <datalist id="cityList">
+                    <option value="Budapest">Budapest</option>
+                    <option value="Debrecen">Debrecen</option>
+                    <option value="Sopron">Sopron</option>
+                    <option value="Székesfehérvár">Székesfehérvár</option>
+                    <option value="Kecskemét">Kecskemét</option>
+                    <option value="Győr">Győr</option>
+                    <option value="Pécs">Pécs</option>
+                </datalist>
+                <label for="postalCode">Postal code:&nbsp;</label>
+                <input type="text" id="postalCode" name="postalCode">
+                <label for="street">Street:&nbsp;</label>
+                <input type="text" id="street" name="street">
+                <label for="number">Number:&nbsp;</label>
+                <input type="text" id="number" name="number">
+            </div>
+        </div>
+        <progress id="progressBar" value="40" max="100"></progress>
+        <div id="acceptContainer">
+            <label for="agree">I accept the Terms of Use</label>
+            <input type="checkbox" name="agree" id="agree">
+        </div>
+        <input type="submit" value="SUBSCRIBE!" id="submit">
+    </form>
+    <script src="app.js"></script>
+</body>
+</html>

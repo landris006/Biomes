@@ -1,0 +1,143 @@
+Készítő: Laczkó András
+Cím: http://web.uni-corvinus.hu/~pdiw2h/
+Téma: Egy-két áltlános információ 3 különböző "biome"-ról (erdő, vizek, sivatag).
+      Ehhez a három oldalhoz társul még egy "landing page" és egy űrlap.
+JS kód: Minden oldalon található valamennyi.
+
+	Funkciók: (a következőkben az önmagában használt "oldal" szó alatt nem html-oldalt értek, hanem a html-oldalak nagyobb
+	  	   tartalmi elemeit, section-ök: title, contents, wrapper(types), inhabitants)
+
+		  -különböző formázások beállítása forest, waters, desert oldalak esetén.
+			-színek: minden oldalhoz tartozik egy tömb, amely az oldal színeit tartalmazza, az oldal betöltésekor egy 
+				 "switch" elágazás a body azonosítója segítségével azonosítja az oldalt és betölti a css változókba
+				 a megfelelő színeket	
+			-háttérképek cserélése
+			-apróbb változtatások: szavak kicserélése a második oldalon, labelek számának kezelése az utolsó oldalon,
+					       illetve a további kód nagy része csak forest, waters vagy desert azonosítóval
+					       rendelkezőbody esetén tölt be, hogy elkerüljük az "error"-okat.
+
+		  -hamburger menü gombjához eseménykiszolgáló, kattintás esetén hozzáadja vagy elveszi a nav-ról a "move" osztályt,
+		   ennek hatására az beúszik, illetve "kiúszik" a viewportból. Hamburger icon emellett el is fordul.
+
+		  -ha eléggé letekerünk, megjelenik egy "Vissza a tetejére" gomb, amely segítségével a "contents" oldalra ugorhatunk.
+		   .getBoundingClientRect() metódus segítségével lekérdezzük az első svg pozícióját a viewportban, majd ha az 
+		   y koordinátája kisebb lesz mint 0, megjelenítjük a gombot
+
+		  -második oldalon "forgó" szövegek: a szavak tömbökben vannak tárolva és egy függvény, amely 3 másodpercenként van
+		   meghívva (setInterval metódus) mindig beállítja következő szót a tömbből a megfelelő <span> szövegének.
+
+		  -harmadik oldalon jobbra és ballra gomb kattintás eseménykiszolgáló: kattintás esetén az egész "wrapper" section-t
+		   eltoljuk, ebben vannak ugye a "type"-ok, ha az elején, vagy a végén vagyunk a "listának", a megfelelő gomb eltűnik.
+		   A pozíciót mindig nyomon követjük egy változóban amelyet szintén változtatunk mozgatásnál, így tudja a program,
+		   hogy éppen melyik elemen állunk, a fenti három/négy kör is ez alapján színeződik be
+
+		  -filter a negyedik oldalon: megnézzük melyik checkboxok vannak bepipálva, ezek értékeiket eltároljuk 2 változóban.
+		   Egyszerre ugye csak 2 checkbox lehet bepipálva (html-ben checkboxok de gyakorlatilag radio gombokként működnek,
+		   ezt a javaScriptben oldottam meg, mivel eredetileg nem így terveztem a programot és egyszerűbb volt javaScript-
+		   ben megjavítani). Ha egy kártya osztályai között szerepelnek a megfelelő kulcsszavak, akkor megjelenik.
+		   Az "inhabitant" label mindig átveszi a megjelölt "type" label színét, ezt valamiért szintén css változókkal ol-
+		   dottam meg, nem tudom miért.
+
+		  -galéria
+
+		  -validálás
+		
+		  -form oldalon progress bar: végigloopolunk a form releváns elemein, megnézzük, hogy ki vannak-e töltve és hogy 
+		   nem hibásak, a progressbar értékét ez alapján állítjuk be
+
+Google webfont: Oswald, mindenhol
+html5 új form elemek: datalist és progress, az űrlap-nál
+
+Nem órán tanult elemek: 
+			-css variables: w3scools (https://www.w3schools.com/css/css3_variables.asp)
+			-css változók kiolvasása és átírása javaScript-tel: w3schools (https://www.w3schools.com/css/css3_variables_javascript.asp)
+			-::before, ::after: Kewin Powell (Youtube: https://www.youtube.com/watch?v=zGiirUiWslI)
+			 (lehet említés szintjén volt órán is)
+			-mást szerintem mindent vettünk, maximum nem ilyen szinten. További általános tájékozódás:
+				-Youtube(Kewin Powell, Web Dev Simplified, Dev Ed, indiaiak)
+				-stackoverflow.com, w3schools.com, webfejlesztés tárgy oldalán kiegészítő anyagok
+
+Egyéb eszközök: -haikei.app  -->  svg generálás
+		-figma       -->  egy-két kép szerkesztése
+		-online image cropper és image resizer
+
+Képek szerzői:
+
+Forrás: https://unsplash.com/
+
+|file neve|                  |szerző|
+
+forest           --------- Filip Zrnzević
+forest3	         --------- Federico Bottos
+deer             --------- Federico Di Dio
+fox              --------- Daniel Morris
+rabbit           --------- TERRYLKNOX
+squirrel         --------- Marko Hankkila
+boreal           --------- Bruno Perrin
+boreal2          --------- pine watt
+boreal3          --------- Luca Bravo
+temperate        --------- Simon Berger
+temperate2       --------- Francesco Gallarotti
+temperate3       --------- Julia Spina
+tropical         --------- Boudhayan Bardhan
+tropical2        --------- Kyle Cleveland
+tropical3        --------- Chris Abney
+reindeer         --------- Saad Chaudhry
+lynx             --------- Oleh Morhun
+wolf             --------- Tahoe
+jaguar           --------- Tobias Tullius
+gorilla          --------- Josh Durham
+fireweed         --------- Olivia Kulbida
+jaguar           --------- Tobias Tullius
+spruce           --------- Christina Deravedisian
+strawberry       --------- Justus Menke
+chestnut         --------- Hansjörg Keller
+rosehips         --------- Annie Spratt
+walnut           --------- Raspopova Marina
+waterlily        --------- Zoltan Tasi
+bmaboo           --------- CHUTTERSNAP
+banana           --------- Georgia de Lotz
+waters           --------- Thierry Meier
+sea              --------- Daniele Franchi
+waters3          --------- Greg Becker
+freshwater       --------- Claudia Chiavazza
+ocean            --------- Erastus McCart
+duck             --------- Hoover Tung
+otter            --------- Mateusz Bajdak
+crocodile        --------- Matthew Muth
+reed             --------- Tao Yuan
+bulrush          --------- Denny Müller
+starfish         --------- Bastien Ruhland
+seahorse         --------- naomi tamar
+shark            --------- Gerald Schömbs
+coral            --------- Milos Prelevic
+jellyfish        --------- Florian Olivo
+desert           --------- Wolfgang Hasselmann
+desert3          --------- Mark Eder
+hot_and_dry      --------- Rubén Bagüés
+semi_arid        --------- Ganapathy Kumar
+coastal          --------- Dan Grinwis
+cold             --------- Glance_India
+rattlesnake      --------- Duncan Sanchez
+camel            --------- Wolfgang Hasselmann
+yucca            --------- Larry Costales
+ephedra          --------- Patrick Hendry
+kangoroo_rat     --------- Mark Boss
+burrowing_owl    --------- Ray Hennessy
+baobab           --------- Leon Pauleikhoff
+great horned owl --------- Ryk Naves
+bobcat           --------- Liz Guertin
+succulent        --------- Yen Vu
+
+
+
+
+Forrás: pexels.com
+
+anemone    --------- Rachel Claire
+whale      --------- Elianne Dipp
+ray        --------- Svetlana Obysova
+cactus     --------- Rachel Claire
+llama      --------- Trace Hudson
+
+
